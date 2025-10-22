@@ -1,4 +1,3 @@
-# app/ingest.py
 import io
 import zipfile
 import requests
@@ -6,14 +5,28 @@ import frontmatter
 from minsearch import Index
 
 
+def safe_load_frontmatter(content: str):
+    """Safely load Markdown frontmatter, fallback to raw text if invalid."""
+    try:
+        post = frontmatter.loads(content)
+        data = post.to_dict()
+        # Ensure 'content' key exists
+        if 'content' not in data:
+            data['content'] = post.content
+        return data
+    except Exception:
+        # If file doesn't have valid frontmatter, return plain content
+        return {"content": content}
+
+
 def read_repo_data(repo_owner, repo_name):
     """Downloads and extracts markdown files from a GitHub repo."""
     url = f'https://codeload.github.com/{repo_owner}/{repo_name}/zip/refs/heads/main'
-    print(f" Downloading repository: {url}")
+    print(f"📦 Downloading repository: {url}")
 
     resp = requests.get(url)
     if resp.status_code != 200:
-        raise Exception(f" Failed to download repo: {resp.status_code}")
+        raise Exception(f"❌ Failed to download repo: {resp.status_code}")
 
     repository_data = []
     zf = zipfile.ZipFile(io.BytesIO(resp.content))
@@ -27,8 +40,7 @@ def read_repo_data(repo_owner, repo_name):
 
         with zf.open(file_info) as f_in:
             content = f_in.read().decode("utf-8", errors="ignore")
-            post = frontmatter.loads(content)
-            data = post.to_dict()
+            data = safe_load_frontmatter(content)
 
             # Clean file path for readability
             _, filename_repo = file_info.filename.split('/', maxsplit=1)
@@ -36,7 +48,7 @@ def read_repo_data(repo_owner, repo_name):
             repository_data.append(data)
 
     zf.close()
-    print(f" Loaded {len(repository_data)} markdown files.")
+    print(f"✅ Loaded {len(repository_data)} markdown files.")
     return repository_data
 
 
@@ -67,7 +79,7 @@ def chunk_documents(docs, size=2000, step=1000):
             chunk.update(doc_copy)
         chunks.extend(doc_chunks)
 
-    print(f" Created {len(chunks)} chunks from {len(docs)} documents.")
+    print(f"🧩 Created {len(chunks)} chunks from {len(docs)} documents.")
     return chunks
 
 
@@ -75,7 +87,7 @@ def index_data(repo_owner, repo_name, filter=None, chunk=False, chunking_params=
     """Runs the full ingestion pipeline: load → filter → chunk → index."""
     docs = read_repo_data(repo_owner, repo_name)
 
-    # Optional filtering (e.g., only include certain folders)
+    # Optional filtering
     if filter is not None:
         docs = [doc for doc in docs if filter(doc)]
 
@@ -87,5 +99,5 @@ def index_data(repo_owner, repo_name, filter=None, chunk=False, chunking_params=
 
     index = Index(text_fields=["content", "filename"])
     index.fit(docs)
-    print("Index built successfully!")
+    print("✅ Index built successfully!")
     return index
