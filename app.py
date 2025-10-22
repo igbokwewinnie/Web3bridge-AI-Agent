@@ -59,7 +59,7 @@ def stream_response(prompt: str):
                     yield text
 
             # Log the interaction after streaming
-            logs.log_interaction_to_file(agent, result.new_messages())
+            #logs.log_interaction_to_file(agent, result.new_messages())
 
     # Run async generator safely in Streamlit (non-blocking)
     loop = asyncio.new_event_loop()
