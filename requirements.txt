@@ -79,7 +79,7 @@ pyarrow==21.0.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pydantic==2.12.3
-pydantic-ai==1.2.1
+pydantic-ai>=0.0.13
 pydantic-ai-slim==1.2.1
 pydantic-evals==1.2.1
 pydantic-graph==1.2.1
