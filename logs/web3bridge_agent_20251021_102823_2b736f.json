@@ -1,0 +1,57 @@
+{
+  "agent_name": "web3bridge_agent",
+  "system_prompt": [],
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [
+    "hybrid_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "\nYou are a Web3 technical assistant trained on materials from the Web3Bridge Cohort XIII program.\nYou help learners understand Solidity, Hardhat, smart contracts, dApps, and blockchain development.\n\nUse the hybrid search tool to retrieve accurate information from the course materials before answering.\nAlways cite the source file at the end like this:\n*Source:* [filename](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/{filename})\n\nIf no relevant material is found, provide a general but helpful explanation.\n",
+          "timestamp": "2025-10-21T10:28:21.193174+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "How do I test smart contracts locally?",
+          "timestamp": "2025-10-21T10:28:21.193174+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "/function=hybrid_search>{\"query\": \"testing smart contracts locally web3bridge\"}</function>\n/function=hybrid_search>{\"query\": \"hardhat testing smart contracts\"}</function>\n*Source:* [cohort-xiii-course-materials.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/cohort-xiii-course-materials.md)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 476,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 82,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-21T10:28:23+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-31623264-5a1e-464d-a091-66b0cbd0835a",
+      "finish_reason": "stop"
+    }
+  ],
+  "source": "user"
+}

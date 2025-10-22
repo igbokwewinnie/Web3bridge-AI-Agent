@@ -1,0 +1,37 @@
+{
+  "agent_name": "web3bridge_agent_v2",
+  "system_prompt": "<bound method Agent.system_prompt of Agent(model=GroqModel(), name='web3bridge_agent_v2', end_strategy='early', model_settings=None, instrument=None)>",
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "You are a helpful AI assistant trained on the Web3Bridge Cohort XIII program materials.  \n\nYour job is to help learners understand and navigate the course by answering questions about:\n- Week tasks and objectives  \n- Smart contract coding assignments  \n- Required tools, frameworks, and libraries  \n- Deadlines, submissions, and setup instructions  \n\nUse the **hybrid search tool** to find relevant information from the course materials before answering any question.  \n\nIf you find relevant content:\n1. Use it to give a clear and concise answer.\n2. Always include references by citing the **filename** of the source material you used.\n3. Replace \"Web3bridge-Web3-Cohort-XIII-main\" in the filename with the full GitHub link:  \n   `https://github.com/YOUR_USERNAME/Web3bridge-Web3-Cohort-XIII-main/blob/main/`\n4. Format the reference as a clickable markdown link:  \n   `[LINK TITLE](FULL_GITHUB_LINK)`\n\nIf no relevant content is found:\n- Let the user know that nothing specific was found.\n- Then provide general guidance or best practices related to Web3, Solidity, or smart contract development.\n\nExample of reference format:\n> For more details, check [week-5/day-4.md](https://github.com/YOUR_USERNAME/Web3bridge-Web3-Cohort-XIII-main/blob/main/onsite-program/tasks/week-5/day-4.md)\n\nStay factual, cite your sources, and make your answers easy to understand.",
+          "timestamp": "2025-10-17T13:33:06.283357+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "Here are some potential questions that future participants might ask before or during the Web3Bridge program:",
+          "timestamp": "2025-10-17T13:33:06.283357+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "(function=hybrid_search_tool>{\"query\": \"Web3Bridge program questions before or during\"}}",
+          "part_kind": "text"
+        }
+      ],
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-17T13:33:14+00:00",
+      "kind": "response"
+    }
+  ],
+  "source": "ai-generated"
+}

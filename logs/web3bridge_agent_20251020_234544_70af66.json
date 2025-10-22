@@ -1,0 +1,127 @@
+{
+  "agent_name": "web3bridge_agent",
+  "system_prompt": [],
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [
+    "hybrid_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "\nYou are a Web3 technical assistant trained on materials from the Web3Bridge Cohort XIII program.\nYou help learners understand Solidity, Hardhat, smart contracts, dApps, and blockchain development.\n\nUse the hybrid search tool to retrieve accurate information from the course materials before answering.\nAlways cite the source file at the end like this:\n*Source:* [filename](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/{filename})\n\nIf no relevant material is found, provide a general but helpful explanation.\n",
+          "timestamp": "2025-10-20T23:45:41.648867+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "Explain what a smart contract is",
+          "timestamp": "2025-10-20T23:45:41.648867+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "args": "{\"query\":\"smart contract definition\"}",
+          "tool_call_id": "tw6j02pan",
+          "id": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 475,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 261,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-20T23:45:44+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-2d3a0b34-b8d6-4629-968d-9e8f07f77b4c",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "content": [
+            {
+              "start": 0,
+              "content": "## Piggy Bank Factory\n\n### Objective\n\n- Build a piggy bank that allow users to Join and create multiple savings account\n- Allow them to save either ERC20 or Ethers: they should be able to choose.\n- Make it a Factory\n- We must be able to get the balance of each user and make the deployer of the factory the admin.\n- Track how many savings account the account have.\n- Track the lock period for each savings plan that a user has on their child contract and they must have different lock periods.\n- And if they intend to withdraw before the lock period that should incur a 3% breaking fee that would be transferred to the account of the deployer of the factory.",
+              "filename": "onsite-program/tasks/week-6/smart-contract-week-task-1.md"
+            },
+            {
+              "start": 0,
+              "content": "## Piggy Bank Factory\n\n### Objective\n\n- Build a piggy bank that allow users to Join and create multiple savings account\n- Allow them to save either ERC20 or Ethers: they should be able to choose.\n- Make it a Factory\n- We must be able to get the balance of each user and make the deployer of the factory the admin.\n- Track how many savings account the account have.\n- Track the lock period for each savings plan that a user has on their child contract and they must have different lock periods.\n- And if they intend to withdraw before the lock period that should incur a 3% breaking fee that would be transferred to the account of the deployer of the factory.",
+              "filename": "online-program/tasks/week-6/smart-contract-week-task-1.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.js\n```",
+              "filename": "online-program/submissions/week-3/day-2/Akinbobola-Hardhat-contract/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.js\n```",
+              "filename": "online-program/submissions/week-3/day-2/Ayooluwa-Oyewo/storage-contract/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.ts\n```",
+              "filename": "onsite-program/submissions/week-3/day-2/Zacheus-Israel-Storage-Contract/README.md"
+            }
+          ],
+          "tool_call_id": "tw6j02pan",
+          "metadata": null,
+          "timestamp": "2025-10-20T23:45:43.110937+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "A smart contract is a self-executing contract with the terms of the agreement written directly into lines of code. It is a program that automates the enforcement and execution of a specific business logic or rules agreed upon by all parties involved._smart contract can facilitate, verify, or enforce the negotiation or execution of a contract.\n\nIn simple terms, a smart contract is a piece of code that runs on a blockchain network, allowing multiple parties to agree on specific rules and guidelines without the need for intermediaries, such as lawyers or banks.\n\n*Source:* onsite-program/tasks/week-6/smart-contract-week-task-1.md (https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/onsite-program/tasks/week-6/smart-contract-week-task-1.md)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1261,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 167,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-20T23:45:44+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-2ef3200c-1ff5-4b14-9210-4113d21cc125",
+      "finish_reason": "stop"
+    }
+  ],
+  "source": "user"
+}

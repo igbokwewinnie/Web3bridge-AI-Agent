@@ -1,0 +1,95 @@
+{
+  "agent_name": "web3bridge_agent_v2",
+  "system_prompt": "<bound method Agent.system_prompt of Agent(model=GroqModel(), name='web3bridge_agent_v2', end_strategy='early', model_settings=None, instrument=None)>",
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "You are a helpful AI assistant trained on the Web3Bridge Cohort XIII program materials.  \n\nYour job is to help learners understand and navigate the course by answering questions about:\n- Week tasks and objectives  \n- Smart contract coding assignments  \n- Required tools, frameworks, and libraries  \n- Deadlines, submissions, and setup instructions  \n\nUse the **hybrid search tool** to find relevant information from the course materials before answering any question.  \n\nIf you find relevant content:\n1. Use it to give a clear and concise answer.\n2. Always include references by citing the **filename** of the source material you used.\n3. Replace \"Web3bridge-Web3-Cohort-XIII-main\" in the filename with the full GitHub link:  \n   `https://github.com/YOUR_USERNAME/Web3bridge-Web3-Cohort-XIII-main/blob/main/`\n4. Format the reference as a clickable markdown link:  \n   `[LINK TITLE](FULL_GITHUB_LINK)`\n\nIf no relevant content is found:\n- Let the user know that nothing specific was found.\n- Then provide general guidance or best practices related to Web3, Solidity, or smart contract development.\n\nExample of reference format:\n> For more details, check [week-5/day-4.md](https://github.com/YOUR_USERNAME/Web3bridge-Web3-Cohort-XIII-main/blob/main/onsite-program/tasks/week-5/day-4.md)\n\nStay factual, cite your sources, and make your answers easy to understand.",
+          "timestamp": "2025-10-17T15:37:59.517422+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "Here are some realistic test questions based on the provided materials:",
+          "timestamp": "2025-10-17T15:37:59.517422+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "args": "{\"query\":\"Week 1 objectives\"}",
+          "tool_call_id": "qy1xfes09",
+          "part_kind": "tool-call"
+        }
+      ],
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-17T15:38:01+00:00",
+      "kind": "response"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search_tool",
+          "content": [
+            {
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/onsite-program/tasks/week-5/day-4.md",
+              "section": "## Practice writing smart contract\n\nJust a simple practice project, enjoy!\n\n### Objectives\n\n- Write a multi signature smart contract\n- Ensure you cannot make transfer until at least 3 of the users agree\n- test with hardhat\n- Make it a factory.\n- Enjoy \ud83d\ude02\n\n### Submission Deadline\n\n**Friday: 5am**"
+            },
+            {
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/onsite-program/tasks/week-5/day-5.md",
+              "section": "## F\n\n### Objective"
+            },
+            {
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/onsite-program/submissions/week-3/day-3/README.md",
+              "section": "## \ud83d\udd11 4. External\n\n- Functions only: Can be called only from outside the contract (externally). Cannot be called internally unless via this.functionName().\n\nExample:\nsolidity\nfunction callMe() external pure returns (string memory) {\nreturn \"Hello\";\n}\n\n---\n\nSummary Table\n\n| Specifier | Contract           | Derived Contracts | External |\n| --------- | ------------------ | ----------------- | -------- |\n| public    | \u2705                 | \u2705                | \u2705       |\n| private   | \u2705                 | \u274c                | \u274c       |\n| internal  | \u2705                 | \u2705                | \u274c       |\n| external  | \u274c (only via this) | \u274c                | \u2705       |\n\n---\n\n\u2705 Created by **Maryjane Ukamaka Okafor**  \n\ud83d\udcda Web3Bridge Cohort XIII  \n\ud83d\uddd3\ufe0f Day 3 \u2013 Solidity Visibility Assignment"
+            },
+            {
+              "start": 0,
+              "chunk": "# Task for Week 3 Day 4\n\n## Classwork\n\nIn your understanding, write a summary of yesterday's lesson using a markdown. \n\n## Guideline\n\n- Navigate to online-program > submissions > week-3 > day-4 \n- Create a new folder with your name as the name of the folder\n- Create a new file inside the folder using (.md) as the file extension\n- Write your summary and then create a PR\n\n---\n\nGood luck!",
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/online-program/tasks/week-3/Day-4-task.md"
+            },
+            {
+              "start": 0,
+              "chunk": "# Web3Bridge Cohort XIII - Mentor Checklist\n\nThis checklist ensures consistency in reviewing student submissions and managing tasks effectively.\n\n## Task Management\n\n- [ ] Create a `Day-<day_number>-task.md` file in the appropriate `/tasks/week-x/` folder.\n- [ ] Clearly define the objectives, requirements, and success criteria for the task.\n- [ ] Include links to relevant resources or documentation.\n- [ ] Push the task to the repository as early as possible.\n\n## Prepare the Submission Folder\n\n- [ ] Navigate to `submissions/week-<week_number>/`.\n- [ ] If a task is assigned for a specific day, **manually create the corresponding day subfolder** (`day-<day_number>/`).\n- [ ] Example: `submissions/week-3/day-2/`\n\n## Reviewing Submissions\n\n- [ ] Check the **Pull Requests (PRs)** tab for new student submissions.\n- [ ] Ensure students follow the correct directory structure (`submissions/week-x/day-y/<student-name>/`).\n- [ ] Review the code quality, completeness, and adherence to task requirements.\n- [ ] Provide constructive feedback via PR comments.\n- [ ] Approve and merge PRs if the submission meets expectations.\n- [ ] If changes are needed, request modifications and guide the student.\n\n## Mentorship & Support\n\n- [ ] Encourage students to ask questions and clarify any doubts.\n- [ ] Regularly engage with students on Discord.\n- [ ] Provide additional explanations or hints where necessary.\n- [ ] Share best practices and useful resources.\n\n---\n\nThank you for your dedication to mentoring Web3Bridge students!",
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/online-program/mentors/mentor-checklist.md"
+            },
+            {
+              "start": 0,
+              "chunk": "# Web3Bridge Cohort XIII - Mentor Checklist\n\nThis checklist ensures consistency in reviewing student submissions and managing tasks effectively.\n\n## Task Management\n\n- [ ] Create a `Day-<day_number>-task.md` file in the appropriate `/tasks/week-x/` folder.\n- [ ] Clearly define the objectives, requirements, and success criteria for the task.\n- [ ] Include links to relevant resources or documentation.\n- [ ] Push the task to the repository as early as possible.\n\n## Prepare the Submission Folder\n\n- [ ] Navigate to `submissions/week-<week_number>/`.\n- [ ] If a task is assigned for a specific day, **manually create the corresponding day subfolder** (`day-<day_number>/`).\n- [ ] Example: `submissions/week-3/day-2/`\n\n## Reviewing Submissions\n\n- [ ] Check the **Pull Requests (PRs)** tab for new student submissions.\n- [ ] Ensure students follow the correct directory structure (`submissions/week-x/day-y/<student-name>/`).\n- [ ] Review the code quality, completeness, and adherence to task requirements.\n- [ ] Provide constructive feedback via PR comments.\n- [ ] Approve and merge PRs if the submission meets expectations.\n- [ ] If changes are needed, request modifications and guide the student.\n\n## Mentorship & Support\n\n- [ ] Encourage students to ask questions and clarify any doubts.\n- [ ] Regularly engage with students on Discord.\n- [ ] Provide additional explanations or hints where necessary.\n- [ ] Share best practices and useful resources.\n\n---\n\nThank you for your dedication to mentoring Web3Bridge students!",
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/onsite-program/mentors/mentor-checklist.md"
+            },
+            {
+              "start": 0,
+              "chunk": "# Mapping 2 \n\n\n### Objective\n- Use mapping for the school management system and the Todo list created\n- Make sure you can use the user address to track his todos and his school. Enjoy. submission is 3am.",
+              "filename": "Web3bridge-Web3-Cohort-XIII-main/onsite-program/tasks/week-4/day-4-task-2&3.md"
+            }
+          ],
+          "tool_call_id": "qy1xfes09",
+          "timestamp": "2025-10-17T15:38:01.268748+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "The objectives for Week 1 are not specified in the search results provided. However, based on the available information, it seems that the week 5 objectives are related to practicing writing smart contracts.\n\nFor more details on Week 1 objectives, I would recommend reaching out to the instructors or mentors for clarity.\n\nIf you'd like to know more about smart contract development, I can provide general guidance and best practices related to Web3 and Solidity. Please let me know how I can assist you!",
+          "part_kind": "text"
+        }
+      ],
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-17T15:38:02+00:00",
+      "kind": "response"
+    }
+  ],
+  "source": "ai-generated"
+}

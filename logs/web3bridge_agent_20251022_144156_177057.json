@@ -1,0 +1,127 @@
+{
+  "agent_name": "web3bridge_agent",
+  "system_prompt": [],
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [
+    "hybrid_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "\nYou are a Web3 technical assistant trained on materials from the Web3Bridge Cohort XIII program.\nYou help learners understand Solidity, Hardhat, smart contracts, dApps, and blockchain development.\n\nUse the hybrid search tool to retrieve accurate information from the course materials before answering.\nAlways cite the source file at the end like this:\n*Source:* [filename](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/{filename})\n\nIf no relevant material is found, provide a general but helpful explanation.\n",
+          "timestamp": "2025-10-22T14:41:52.574748+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "What are the topics covered each week?",
+          "timestamp": "2025-10-22T14:41:52.574748+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "args": "{\"query\":\"Week topics Web3Bridge Cohort XIII\"}",
+          "tool_call_id": "fs1bhvxhx",
+          "id": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 476,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 58,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-22T14:41:55+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-044cc219-e636-421e-846f-3c77d5dc2ba6",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "content": [
+            {
+              "start": 0,
+              "content": "# Solidity Visibility Specifiers - Explained Simply\n\nIn Solidity, **visibility specifiers** control **who can access** functions or state variables. There are **four** main visibility levels:\n\n- `public`\n- `internal`\n- `private`\n- `external` (only for functions)\n\n---\n\n## \ud83d\udd11 1. public\n\n### \ud83d\udd39 For Functions:\n\n- Can be **called from anywhere**: within the contract, from derived (child) contracts, and from external accounts or contracts.\n  _Example:_\n\n```solidity\nfunction sayHello() public pure returns (string memory) {\n    return \"Hello!\";\n}\n\n\n---\n\n## \ud83d\udd11 2. private\n\n- *Functions & Variables:* Only accessible within the contract where they are declared. Not accessible from derived contracts or externally.\n\n*Example:*\nsolidity\nuint private secret;\n\nfunction setSecret(uint _value) private {\n    secret = _value;\n}\n\n\n---\n\n3. *Internal*\n## \ud83d\udd11 3. Internal\n\n- *Functions & Variables:* Accessible within the contract and from derived (child) contracts. Not accessible externally.\n\n*Example:*\nsolidity\nuint internal data;\n\nfunction updateData(uint _val) internal {\n    data = _val;\n}\n```\n\n---\n\n## \ud83d\udd11 4. External\n\n- Functions only: Can be called only from outside the contract (externally). Cannot be called internally unless via this.functionName().\n\nExample:\nsolidity\nfunction callMe() external pure returns (string memory) {\nreturn \"Hello\";\n}\n\n---\n\nSummary Table\n\n| Specifier | Contract           | Derived Contracts | External |\n| --------- | ------------------ | ----------------- | -------- |\n| public    | \u2705                 | \u2705                | \u2705       |\n| private   | \u2705                 | \u274c                | \u274c       |\n| internal  | \u2705                 | \u2705                | \u274c       |\n| external  | \u274c (only via this) | \u274c                | \u2705       |\n\n---\n\n\u2705 Created by **Maryjane Ukamaka Okafor**  \n\ud83d\udcda Web3Bridge Cohort XIII  \n\ud83d\uddd3\ufe0f Day 3 \u2013 Solidity Visibility Assignment",
+              "filename": "onsite-program/submissions/week-3/day-3/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Web3bridge Web3 Cohort XIII - GitHub Contribution Guide\n\nWelcome to the Web3Bridge Cohort XIII training program! This repository is used for submitting tasks, tracking student progress, and grading assessments. Follow this guide to ensure a smooth contribution process.\n\n--- \n\n## For Students: Submitting Your Tasks\n\n### 1. Fork the Repository\n\nCreate a personal copy of this repository on your GitHub account.\n\n- Visit the repository page: [Web3bridge-Web3-Cohort-XIII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII)\n- Click the \"Fork\" button at the top right of the page.\n\n### 2. Clone Your Forked Repository\n\nDownload your forked repository to your local machine:\n\n```bash\ngit clone https://github.com/<your_username>/Web3bridge-Web3-Cohort-XIII\ncd Web3bridge-Web3-Cohort-XIII\n```\n\n### 3. Sync Your Repository Regularly\n\nKeep your fork updated with the latest changes from the main repository:\n\n```bash\ngit remote add upstream https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII\ngit pull upstream master\ngit push origin master\n```\n\n### 4. Navigate to the Correct Submission Folder\n\nTasks are categorized by week and day. Navigate to the appropriate folder:\n\n```bash\ncd submissions/week-<week_number>/day-<day_number>\n```\n\nExample:\n\n```bash\ncd submissions/week-1/day-1\n```\n\n### 5. Create Your Personal Folder\n\nEach student should create a folder using their registered name and project name:\n\n```bash\nmkdir <your_name>-<project_name>\n```\n\nExample:\n\n```bash\nmkdir JohnDoe-Merkle-Tree\n```\n\n### 6. Add Your Task Files\n\nPlace your task files inside your folder. Ensure proper documentation and organization.\n\n### 7. Commit and Push Your Changes\n\nSave your changes and push them to your forked repository:\n\n```bash\ngit add .\ngit commit -m \"Add Week <week_number> Day <day_number> task for <your_name> <project_name>\"\ngit push origin main\n```\n\nExample:\n\n```bash\ngit add .\ngit commit -m \"Add Week 1 Day 1 task for JohnDoe Merkle Tree\"\ngit push origin main\n```\n\n### 8. Create a Pull R",
+              "filename": "README.md"
+            },
+            {
+              "start": 0,
+              "content": "TASK ONE\n\n- Deploy and Verify storage.sol contract (get it from Remix IDE) using Hardhat to Lisk Sepolia, push your code to Web3Bridge organisation repo",
+              "filename": "onsite-program/tasks/week-3/Day-2-task.md"
+            },
+            {
+              "start": 0,
+              "content": "# Task for Week 3 Day 4\n\n## Classwork\n\nIn your understanding, write a summary of yesterday's lesson using a markdown. \n\n## Guideline\n\n- Navigate to online-program > submissions > week-3 > day-4 \n- Create a new folder with your name as the name of the folder\n- Create a new file inside the folder using (.md) as the file extension\n- Write your summary and then create a PR\n\n---\n\nGood luck!",
+              "filename": "online-program/tasks/week-3/Day-4-task.md"
+            },
+            {
+              "start": 0,
+              "content": "### Summary\n\nIn summary, I learned what Solidity is and how it handles different types of data. **Value types** store actual data and are copied when used. These include:\n\n- `bool` (true or false)  \n- `int` and `uint` (for numbers)  \n- `address` (for Ethereum addresses)  \n- `bytes` (fixed-size binary data)  \n- `string` (text)  \n- `enum` (custom options)\n\nOn the other hand, **reference types** store a pointer to the data, meaning changes to one variable can affect another if they point to the same place. These include:\n\n- `arrays`  \n- `strings`  \n- `structs` (custom data groups)  \n- `mappings` (key-value pairs)\n\n\n### About Smart Contract\n\nI learned what a smart contract is and how its structure works in Solidity. A smart contract is like a program stored on the blockchain. It holds both data (called **state variables**) and logic (called **functions**).\n\nSome key things I learnt from the sample smart contract that was used in class were:\n\n- **SPDX-License Identifier**: A comment at the top that mentions the license type (not required, but recommended).\n- **Pragma**: Tells the Solidity compiler which version to use.\n- **Semicolons** are mandatory in Solidity.\n- **Contracts** in Solidity are similar to classes in other languages. They bundle variables and functions together.\n- **State variables** are stored on the blockchain.\n- **Functions** define actions the contract can take. Functions have return types and can be visible to the public or private to the contract.\n\n---\n\n### I also learned about variable scope in Solidity:\n\n- **State variables**: Stored permanently on the blockchain.\n- **Local variables**: Exist temporarily during function execution.\n- **Global variables**: Built-in values provided by Solidity, like block time or sender address.\n\n---\n\n### Then I learned about visibility specifiers:\n\n- `public`: Anyone can access (inside or outside the contract).\n- `private`: Only within the same contract.\n- `internal`: Same contract or child contracts.\n- `external`: C",
+              "filename": "online-program/submissions/week-3/day-4/SUMMARY.md"
+            }
+          ],
+          "tool_call_id": "fs1bhvxhx",
+          "metadata": null,
+          "timestamp": "2025-10-22T14:41:55.733761+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "The course materials cover a variety of topics each week including:\n\n- Day 3: Solidity Visibility Specifiers\n\nThese topics are spread across various submissions, tasks, and assignments within the course material for Web3Bridge Cohort XIII.\n\n*Source:* [week-3](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/onsite-program/submissions/week-3/README.md), [README.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/README.md), [Day-2-task.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/onsite-program/tasks/week-3/Day-2-task.md), [Day-4-task.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/online-program/tasks/week-3/Day-4-task.md), and [SUMMARY.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/online-program/submissions/week-3/day-4/SUMMARY.md)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2367,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 251,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-22T14:41:56+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-fb60b3a4-907b-4ec6-b02f-98f789734d03",
+      "finish_reason": "stop"
+    }
+  ],
+  "source": "user"
+}

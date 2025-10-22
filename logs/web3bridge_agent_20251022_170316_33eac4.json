@@ -1,0 +1,127 @@
+{
+  "agent_name": "web3bridge_agent",
+  "system_prompt": [],
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [
+    "hybrid_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "\nYou are a Web3 technical assistant trained on materials from the Web3Bridge Cohort XIII program.\nYou help learners understand Solidity, Hardhat, smart contracts, dApps, and blockchain development.\n\nUse the hybrid search tool to retrieve accurate information from the course materials before answering.\nAlways cite the source file at the end like this:\n*Source:* [filename](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/{filename})\n\nIf no relevant material is found, provide a general but helpful explanation.\n",
+          "timestamp": "2025-10-22T17:03:13.957004+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "What is Web3?",
+          "timestamp": "2025-10-22T17:03:13.957004+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "args": "{\"query\":\"What is Web3\"}",
+          "tool_call_id": "3jx3nb8mz",
+          "id": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 473,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 34,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-22T17:03:16+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-cb23a462-2875-4fe7-96da-fc1cc6a518f0",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "content": [
+            {
+              "start": 0,
+              "content": "# Web3bridge Web3 Cohort XIII - GitHub Contribution Guide\n\nWelcome to the Web3Bridge Cohort XIII training program! This repository is used for submitting tasks, tracking student progress, and grading assessments. Follow this guide to ensure a smooth contribution process.\n\n--- \n\n## For Students: Submitting Your Tasks\n\n### 1. Fork the Repository\n\nCreate a personal copy of this repository on your GitHub account.\n\n- Visit the repository page: [Web3bridge-Web3-Cohort-XIII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII)\n- Click the \"Fork\" button at the top right of the page.\n\n### 2. Clone Your Forked Repository\n\nDownload your forked repository to your local machine:\n\n```bash\ngit clone https://github.com/<your_username>/Web3bridge-Web3-Cohort-XIII\ncd Web3bridge-Web3-Cohort-XIII\n```\n\n### 3. Sync Your Repository Regularly\n\nKeep your fork updated with the latest changes from the main repository:\n\n```bash\ngit remote add upstream https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII\ngit pull upstream master\ngit push origin master\n```\n\n### 4. Navigate to the Correct Submission Folder\n\nTasks are categorized by week and day. Navigate to the appropriate folder:\n\n```bash\ncd submissions/week-<week_number>/day-<day_number>\n```\n\nExample:\n\n```bash\ncd submissions/week-1/day-1\n```\n\n### 5. Create Your Personal Folder\n\nEach student should create a folder using their registered name and project name:\n\n```bash\nmkdir <your_name>-<project_name>\n```\n\nExample:\n\n```bash\nmkdir JohnDoe-Merkle-Tree\n```\n\n### 6. Add Your Task Files\n\nPlace your task files inside your folder. Ensure proper documentation and organization.\n\n### 7. Commit and Push Your Changes\n\nSave your changes and push them to your forked repository:\n\n```bash\ngit add .\ngit commit -m \"Add Week <week_number> Day <day_number> task for <your_name> <project_name>\"\ngit push origin main\n```\n\nExample:\n\n```bash\ngit add .\ngit commit -m \"Add Week 1 Day 1 task for JohnDoe Merkle Tree\"\ngit push origin main\n```\n\n### 8. Create a Pull R",
+              "filename": "README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Beginners Guide on Solidity Visibility Specifiers\n\nThe evolution of web3 have help our generation in many diverse ways. This web3 help us to own our work and give us more access. it involve smart contracts which are written in solidity and other languages. \n\nSolidity is a programming language that helps us build smart contracts, it enables us to interact with the Ethereum virtual machine and many others layer 2. To fully understand Solidity we would look at its visible specifiers.\n\nThis guide explains visibility specifiers in Solidity, which control who can access variables and functions in a smart contract.\n\n# Overview\n\nVisibility Specifiers determine who we can see and interact with, inside a smart contracts. It involves the variables and functions which set a simple way about where and how different parts of the smart contract can be accessed or used. Think of them as defining the boundaries or borders of your smart contract\u2019s data and actions, making sure that only the right people or other parts of the contract can access or change certain information. This helps keep your contract secure and organized, so it works exactly as intended.\n\nVisibility specifiers define how data (variables) and actions (functions) in a smart contract can be accessed. There are four types which are Public, Private, Internal, and External.\n\n# Visibility Types\n\n1.\tPublic: It is open to everyone, even external users, other contracts, and the contract itself can access and use it. Like a water borne hole in a community, anyone can read public variables or call public functions.\n\n2.\tPrivate: It is personalized, only the contract itself can access. Like a locked safe to keep your items when entering a bank, private variables and functions are hidden from external users and inherited contracts.\n\n3.\tInternal: Accessible by the contract and its children (inherited contracts). Like a family room, only the contract and its derived contracts can use internal variables or functions.\n\n4.\tExterna",
+              "filename": "onsite-program/submissions/week-3/day-3/George Chisom N/README.md"
+            },
+            {
+              "start": 3000,
+              "content": "tect your belongings. Only open up access when you are sure it\u2019s needed. For example, keep sensitive data like user balances or internal calculations private to prevent unauthorized access.\n\n\u2022\tUse public sparingly, only when external access is necessary: Think of public as putting a signboard outside your house that anyone can read or interact with. Use it for things like a token\u2019s total supply or a function that lets users check their account details. Avoid making everything public, as it can expose your contract to unintended interactions or attacks.\n\n\u2022\tChoose external for functions designed for outsiders: If a function is meant to be an entry point for users or other contracts, like depositing funds into a bank, the contract will mark it as external. This is like having a front desk that only serves visitors, not family members inside the house. It also saves gas (transaction costs) for external calls, making your contract more efficient.\n\n\u2022\tAlways specify visibility explicitly: Don\u2019t over rely on the programming Solidity default settings, as they can lead to mistakes. For example, older versions of Solidity made functions public by default, which could accidentally expose them. Always declare whether a variable or function is public, private, internal, or external to make your intentions clear and avoid surprises.\n\n\u2022\tPlan for inheritance with internal: If you\u2019re building contracts that inherit from each other (like a base contract for a bank and child contracts for savings accounts), use internal for variables and functions you want to share with those child contracts. This is like sharing a family recipe with your kids but not with strangers.\n\nThis readMe file is to help beginners in the web3 space to have bed rock knowledge about visibity specifiers and what it contains. Although there are others involve that are not mentioned here.",
+              "filename": "onsite-program/submissions/week-3/day-3/George Chisom N/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Web3 Frontend Development Task 1\n\n## Objective\n\nBuild a frontend application to interact with the provided staking smart contract, demonstrating proficiency in dApp development and contract integration.\n\n## Requirements\n\n### 1. Frontend Development\n\n-   **User Interface**:\n\n    -   Wallet connection functionality\n    -   Staking form with amount input\n    -   Withdrawal interface\n    -   Rewards claim section\n    -   Emergency withdrawal option\n    -   All Stake position display\n    -   User Stake position display\n\n-   **Data Display**:\n    -   Current staking position\n    -   Pending rewards\n    -   Time until unlock\n    -   Current APR\n    -   Total protocol statistics (total staked, reward rate, etc.)\n\n### 2. Contract Integration\n\n-   **Contract Functions to Implement**:\n\n    -   `stake()`\n    -   `withdraw()`\n    -   `claimRewards()`\n    -   `emergencyWithdraw()`\n\n-   **Data Retrieval (Read Functions / Public Variables)**:\n    -   User\u2019s stake(s)\n    -   User\u2019s pending rewards\n    -   Unlock time per stake position\n    -   Contract-wide statistics:\n        -   total staked\n        -   reward rate\n        -   protocol-level APR\n\n### 3. Technology Stack\n\n-   Framework: React/Next.js (JavaScript/TypeScript)\n-   Web3 Library: `ethers.js` or `viem`\n\n### 4. Additional Information\n\n-   **Contract**: deploy [staking contract](https://github.com/Timidan/Staking/)\n-   **Network**: Sepolia\n\n## Submission Requirements\n\n1. GitHub repository containing:\n\n    - Frontend application\n    - README with setup instructions\n\n2. Deployed frontend application URL",
+              "filename": "onsite-program/tasks/week-10/task-1.md"
+            },
+            {
+              "start": 0,
+              "content": "# Understanding Visibility in Solidity\n\nWhen you're building smart contracts with Solidity, you define **functions** (actions your contract can perform) and **state variables** (data your contract stores, like numbers, text, or true/false values). To control who can see or use these, Solidity gives you special keywords called **visibility specifiers**. Think of them like permissions or access levels.\n\n\n## The Four Access Levels\n\nSolidity offers four main visibility specifiers:\n\n### 1\\. `private`\n\nThis is the most restrictive.\n\n  * **What it means:** Only the contract where it's defined can see or use it. No other contracts, not even ones that inherit from it, can access `private` elements.\n  * **When to use it:** When you have data or a function that's purely for the contract's internal workings and shouldn't be exposed to anyone else.\n  * **Analogy:** Imagine a **personal diary** that only *you* can read.\n\n### 2\\. `internal`\n\nThis offers a bit more access than `private`.\n\n  * **What it means:** The contract itself can use it, and so can any other contracts that are built *on top* of it (contracts that **inherit** from it).\n  * **When to use it:** When you want a function or variable to be shared among a family of related contracts but not exposed to the outside world.\n  * **Analogy:** This is like **family-only information** that's shared within your immediate family but not with outsiders.\n\n### 3\\. `public`\n\nThis is the most open option.\n\n  * **What it means:** Anyone can access it \u2013 from inside the contract, from other contracts, or even from external users interacting with your contract.\n  * **When to use it:** When you want to provide a way for people or other contracts to interact with your contract's data or functions.\n  * **Extra cool thing:** If you declare a **state variable** as `public`, Solidity automatically creates a function that lets anyone easily read its value. This is super handy\\!\n\n### 4\\. `external`\n\nThis specifier is specifically for functions",
+              "filename": "onsite-program/submissions/week-3/day-3/Tella-Adetayo/README.md"
+            }
+          ],
+          "tool_call_id": "3jx3nb8mz",
+          "metadata": null,
+          "timestamp": "2025-10-22T17:03:16.001041+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "Web3 is an umbrella term that refers to a new set of technologies and applications that aim to create a more open, secure, and decentralized web. It builds on the original World Wide Web (Web 1.0) and Web 2.0, and it's often described as the next generation of the internet. *Source:* [README.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/README.md)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2878,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 98,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-22T17:03:16+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-f80bef28-60a8-432b-ab27-7047cc18dc9b",
+      "finish_reason": "stop"
+    }
+  ],
+  "source": "user"
+}

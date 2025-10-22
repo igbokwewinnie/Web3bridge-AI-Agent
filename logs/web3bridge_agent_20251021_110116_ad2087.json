@@ -1,0 +1,152 @@
+{
+  "agent_name": "web3bridge_agent",
+  "system_prompt": [],
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [
+    "hybrid_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "\nYou are a Web3 technical assistant trained on materials from the Web3Bridge Cohort XIII program.\nYou help learners understand Solidity, Hardhat, smart contracts, dApps, and blockchain development.\n\nUse the hybrid search tool to retrieve accurate information from the course materials before answering.\nAlways cite the source file at the end like this:\n*Source:* [filename](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/{filename})\n\nIf no relevant material is found, provide a general but helpful explanation.\n",
+          "timestamp": "2025-10-21T11:01:13.175932+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "What are the topics covered each week?",
+          "timestamp": "2025-10-21T11:01:13.175932+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "args": "{\"num_results\":10,\"query\":\"Web3Bridge cohort XIII topics\"}",
+          "tool_call_id": "twnmn26hz",
+          "id": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 476,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 57,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-21T11:01:15+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-14f86273-0548-4216-ac93-1c2f065b51ce",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "content": [
+            {
+              "start": 0,
+              "content": "# Web3bridge Web3 Cohort XIII - GitHub Contribution Guide\n\nWelcome to the Web3Bridge Cohort XIII training program! This repository is used for submitting tasks, tracking student progress, and grading assessments. Follow this guide to ensure a smooth contribution process.\n\n--- \n\n## For Students: Submitting Your Tasks\n\n### 1. Fork the Repository\n\nCreate a personal copy of this repository on your GitHub account.\n\n- Visit the repository page: [Web3bridge-Web3-Cohort-XIII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII)\n- Click the \"Fork\" button at the top right of the page.\n\n### 2. Clone Your Forked Repository\n\nDownload your forked repository to your local machine:\n\n```bash\ngit clone https://github.com/<your_username>/Web3bridge-Web3-Cohort-XIII\ncd Web3bridge-Web3-Cohort-XIII\n```\n\n### 3. Sync Your Repository Regularly\n\nKeep your fork updated with the latest changes from the main repository:\n\n```bash\ngit remote add upstream https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII\ngit pull upstream master\ngit push origin master\n```\n\n### 4. Navigate to the Correct Submission Folder\n\nTasks are categorized by week and day. Navigate to the appropriate folder:\n\n```bash\ncd submissions/week-<week_number>/day-<day_number>\n```\n\nExample:\n\n```bash\ncd submissions/week-1/day-1\n```\n\n### 5. Create Your Personal Folder\n\nEach student should create a folder using their registered name and project name:\n\n```bash\nmkdir <your_name>-<project_name>\n```\n\nExample:\n\n```bash\nmkdir JohnDoe-Merkle-Tree\n```\n\n### 6. Add Your Task Files\n\nPlace your task files inside your folder. Ensure proper documentation and organization.\n\n### 7. Commit and Push Your Changes\n\nSave your changes and push them to your forked repository:\n\n```bash\ngit add .\ngit commit -m \"Add Week <week_number> Day <day_number> task for <your_name> <project_name>\"\ngit push origin main\n```\n\nExample:\n\n```bash\ngit add .\ngit commit -m \"Add Week 1 Day 1 task for JohnDoe Merkle Tree\"\ngit push origin main\n```\n\n### 8. Create a Pull R",
+              "filename": "README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Solidity Visibility Specifiers - Explained Simply\n\nIn Solidity, **visibility specifiers** control **who can access** functions or state variables. There are **four** main visibility levels:\n\n- `public`\n- `internal`\n- `private`\n- `external` (only for functions)\n\n---\n\n## \ud83d\udd11 1. public\n\n### \ud83d\udd39 For Functions:\n\n- Can be **called from anywhere**: within the contract, from derived (child) contracts, and from external accounts or contracts.\n  _Example:_\n\n```solidity\nfunction sayHello() public pure returns (string memory) {\n    return \"Hello!\";\n}\n\n\n---\n\n## \ud83d\udd11 2. private\n\n- *Functions & Variables:* Only accessible within the contract where they are declared. Not accessible from derived contracts or externally.\n\n*Example:*\nsolidity\nuint private secret;\n\nfunction setSecret(uint _value) private {\n    secret = _value;\n}\n\n\n---\n\n3. *Internal*\n## \ud83d\udd11 3. Internal\n\n- *Functions & Variables:* Accessible within the contract and from derived (child) contracts. Not accessible externally.\n\n*Example:*\nsolidity\nuint internal data;\n\nfunction updateData(uint _val) internal {\n    data = _val;\n}\n```\n\n---\n\n## \ud83d\udd11 4. External\n\n- Functions only: Can be called only from outside the contract (externally). Cannot be called internally unless via this.functionName().\n\nExample:\nsolidity\nfunction callMe() external pure returns (string memory) {\nreturn \"Hello\";\n}\n\n---\n\nSummary Table\n\n| Specifier | Contract           | Derived Contracts | External |\n| --------- | ------------------ | ----------------- | -------- |\n| public    | \u2705                 | \u2705                | \u2705       |\n| private   | \u2705                 | \u274c                | \u274c       |\n| internal  | \u2705                 | \u2705                | \u274c       |\n| external  | \u274c (only via this) | \u274c                | \u2705       |\n\n---\n\n\u2705 Created by **Maryjane Ukamaka Okafor**  \n\ud83d\udcda Web3Bridge Cohort XIII  \n\ud83d\uddd3\ufe0f Day 3 \u2013 Solidity Visibility Assignment",
+              "filename": "onsite-program/submissions/week-3/day-3/README.md"
+            },
+            {
+              "start": 2000,
+              "content": "equest\n\n- Go to the original GitHub repository in your browser: [Web3bridge-Web3-Cohort-XIII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII).\n- Click on the Pull Requests tab.\n- Click New Pull Request and select \"Compare across forks\" if needed.\n- Select your forked repository and branch as the source, and the master branch of the original repository as the destination.\n- Provide a descriptive title and include details about your project in the description.\n\nExample PR Title:\n\n```bash\nAdd Week 1 Day 1 task for JohnDoe Merkle Tree\n```\n\n### 9. Wait for Review\n\nMentors may leave comments or request changes. Make updates accordingly and push again.\n\n---\n\n## Additional Notes\n\n- Ensure your project is complete, well-documented, and functional before submitting.\n- Follow the repository's coding and folder structure guidelines.\n- Create a new folder each week and place all files and assets related to that week's project in the folder.\n- PRs should have meaningful descriptions.\n- Regularly sync the repository to get the latest updates.\n- If you encounter any issues, contact your training facilitator for help.\n\n## For Mentors: Managing Tasks\n\n### 1. Adding Tasks\n\n- Navigate to the **tasks/week-<week_number>/** folder.\n- Create a markdown file named `Day-<day_number>-task.md`.\n- Provide clear instructions and expectations.\n- Commit and push your changes.\n\nExample:\n\n```bash\ngit add tasks/week-1/Day-1-task.md\ngit commit -m \"Add Week 1 Day 1 Merkle Tree Task\"\ngit push origin main\n```\n\n### 2. Preparing the Submission Folder\n\n- Navigate to the **submissions/week-<week_number>/** folder.\n- If a task is given for a specific day, create a corresponding **day subfolder** (`day-<day_number>/`).\n- Example:\n  submissions/week-3/day-2/\n\n- Students will submit inside this subfolder using their **Registered Name** and **Project Name** as their personal directory.\n- Example:\n  submissions/week-3/day-2/JohnDoe-Merkle-Tree/\n\n### 3. Reviewing Student Submissions\n\n- Check the Pull Re",
+              "filename": "README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Web3Bridge Cohort XIII - Mentor Checklist\n\nThis checklist ensures consistency in reviewing student submissions and managing tasks effectively.\n\n## Task Management\n\n- [ ] Create a `Day-<day_number>-task.md` file in the appropriate `/tasks/week-x/` folder.\n- [ ] Clearly define the objectives, requirements, and success criteria for the task.\n- [ ] Include links to relevant resources or documentation.\n- [ ] Push the task to the repository as early as possible.\n\n## Prepare the Submission Folder\n\n- [ ] Navigate to `submissions/week-<week_number>/`.\n- [ ] If a task is assigned for a specific day, **manually create the corresponding day subfolder** (`day-<day_number>/`).\n- [ ] Example: `submissions/week-3/day-2/`\n\n## Reviewing Submissions\n\n- [ ] Check the **Pull Requests (PRs)** tab for new student submissions.\n- [ ] Ensure students follow the correct directory structure (`submissions/week-x/day-y/<student-name>/`).\n- [ ] Review the code quality, completeness, and adherence to task requirements.\n- [ ] Provide constructive feedback via PR comments.\n- [ ] Approve and merge PRs if the submission meets expectations.\n- [ ] If changes are needed, request modifications and guide the student.\n\n## Mentorship & Support\n\n- [ ] Encourage students to ask questions and clarify any doubts.\n- [ ] Regularly engage with students on Discord.\n- [ ] Provide additional explanations or hints where necessary.\n- [ ] Share best practices and useful resources.\n\n---\n\nThank you for your dedication to mentoring Web3Bridge students!",
+              "filename": "onsite-program/mentors/mentor-checklist.md"
+            },
+            {
+              "start": 0,
+              "content": "# Web3Bridge Cohort XIII - Mentor Checklist\n\nThis checklist ensures consistency in reviewing student submissions and managing tasks effectively.\n\n## Task Management\n\n- [ ] Create a `Day-<day_number>-task.md` file in the appropriate `/tasks/week-x/` folder.\n- [ ] Clearly define the objectives, requirements, and success criteria for the task.\n- [ ] Include links to relevant resources or documentation.\n- [ ] Push the task to the repository as early as possible.\n\n## Prepare the Submission Folder\n\n- [ ] Navigate to `submissions/week-<week_number>/`.\n- [ ] If a task is assigned for a specific day, **manually create the corresponding day subfolder** (`day-<day_number>/`).\n- [ ] Example: `submissions/week-3/day-2/`\n\n## Reviewing Submissions\n\n- [ ] Check the **Pull Requests (PRs)** tab for new student submissions.\n- [ ] Ensure students follow the correct directory structure (`submissions/week-x/day-y/<student-name>/`).\n- [ ] Review the code quality, completeness, and adherence to task requirements.\n- [ ] Provide constructive feedback via PR comments.\n- [ ] Approve and merge PRs if the submission meets expectations.\n- [ ] If changes are needed, request modifications and guide the student.\n\n## Mentorship & Support\n\n- [ ] Encourage students to ask questions and clarify any doubts.\n- [ ] Regularly engage with students on Discord.\n- [ ] Provide additional explanations or hints where necessary.\n- [ ] Share best practices and useful resources.\n\n---\n\nThank you for your dedication to mentoring Web3Bridge students!",
+              "filename": "online-program/mentors/mentor-checklist.md"
+            },
+            {
+              "start": 0,
+              "content": "TASK ONE\n\n- Deploy and Verify storage.sol contract (get it from Remix IDE) using Hardhat to Lisk Sepolia, push your code to Web3Bridge organisation repo",
+              "filename": "onsite-program/tasks/week-3/Day-2-task.md"
+            },
+            {
+              "start": 1000,
+              "content": "III\ngit pull upstream master\ngit push origin master\n```\n\n### 4. Navigate to the Correct Submission Folder\n\nTasks are categorized by week and day. Navigate to the appropriate folder:\n\n```bash\ncd submissions/week-<week_number>/day-<day_number>\n```\n\nExample:\n\n```bash\ncd submissions/week-1/day-1\n```\n\n### 5. Create Your Personal Folder\n\nEach student should create a folder using their registered name and project name:\n\n```bash\nmkdir <your_name>-<project_name>\n```\n\nExample:\n\n```bash\nmkdir JohnDoe-Merkle-Tree\n```\n\n### 6. Add Your Task Files\n\nPlace your task files inside your folder. Ensure proper documentation and organization.\n\n### 7. Commit and Push Your Changes\n\nSave your changes and push them to your forked repository:\n\n```bash\ngit add .\ngit commit -m \"Add Week <week_number> Day <day_number> task for <your_name> <project_name>\"\ngit push origin main\n```\n\nExample:\n\n```bash\ngit add .\ngit commit -m \"Add Week 1 Day 1 task for JohnDoe Merkle Tree\"\ngit push origin main\n```\n\n### 8. Create a Pull Request\n\n- Go to the original GitHub repository in your browser: [Web3bridge-Web3-Cohort-XIII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII).\n- Click on the Pull Requests tab.\n- Click New Pull Request and select \"Compare across forks\" if needed.\n- Select your forked repository and branch as the source, and the master branch of the original repository as the destination.\n- Provide a descriptive title and include details about your project in the description.\n\nExample PR Title:\n\n```bash\nAdd Week 1 Day 1 task for JohnDoe Merkle Tree\n```\n\n### 9. Wait for Review\n\nMentors may leave comments or request changes. Make updates accordingly and push again.\n\n---\n\n## Additional Notes\n\n- Ensure your project is complete, well-documented, and functional before submitting.\n- Follow the repository's coding and folder structure guidelines.\n- Create a new folder each week and place all files and assets related to that week's project in the folder.\n- PRs should have meaningful descriptions.\n- R",
+              "filename": "README.md"
+            },
+            {
+              "start": 3000,
+              "content": "egularly sync the repository to get the latest updates.\n- If you encounter any issues, contact your training facilitator for help.\n\n## For Mentors: Managing Tasks\n\n### 1. Adding Tasks\n\n- Navigate to the **tasks/week-<week_number>/** folder.\n- Create a markdown file named `Day-<day_number>-task.md`.\n- Provide clear instructions and expectations.\n- Commit and push your changes.\n\nExample:\n\n```bash\ngit add tasks/week-1/Day-1-task.md\ngit commit -m \"Add Week 1 Day 1 Merkle Tree Task\"\ngit push origin main\n```\n\n### 2. Preparing the Submission Folder\n\n- Navigate to the **submissions/week-<week_number>/** folder.\n- If a task is given for a specific day, create a corresponding **day subfolder** (`day-<day_number>/`).\n- Example:\n  submissions/week-3/day-2/\n\n- Students will submit inside this subfolder using their **Registered Name** and **Project Name** as their personal directory.\n- Example:\n  submissions/week-3/day-2/JohnDoe-Merkle-Tree/\n\n### 3. Reviewing Student Submissions\n\n- Check the Pull Requests (PRs) tab on GitHub.\n- Open a PR and review the student\u2019s work.\n- Leave comments for corrections if needed.\n- Approve the PR if it meets expectations.\n- Merge the PR after approval.\n\nThank you for contributing to Web3Bridge Cohort XIII! Happy coding!",
+              "filename": "README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Web3bridge Web3 Cohort XIII - Sherif Lawal Week3, Day 2 Submission\n\n# Visibility specifiers in Solidity as they relate to variables and functions\n\nI set out to discuss different visibility specifiers in solidity as they relate to variables and functions. According to [freecodecamp](https://www.freecodecamp.org/news/learn-solidity-handbook/#heading-how-to-declare-variables-and-functions-in-solidity), in Solidity, visibility means \"the ability of a piece of code to be seen and accessed by another piece of code\". How I understand this is, visibility in solidity refers to how a piece of code is seen and accessible by another piece of code. These visiibilities are basically attributed to variables or functions to determine how these variables or functions can be seen and accessed. There are just four (4) visibility specifiers in Solidity and they are: public, internal, external, and private.\n\n```bash\n    Public functions and variables can be accessed in:\n    1. Inside the contract\n    2. Outside the contract\n    3. From other smart contracts\n    4. From external accounts... basically, can be accessed everywhere.\n```\n\n    ### For example  `string public publicVar = \"I am public\";\n\n        Here, this is a variable with the name publicVar.\n        That variable is a string.\n        That variable can be accessed everywhere.\n\n---\n\n```bash\n    Private functions and variables can be accessed in:\n    1. Only within the smart contact that declares them.\n```\n\n    ### For example  `string private privateVar = \"I am private\";\n\n        Here, this is a variable with the name privateVar.\n        That variable is a string.\n        That variable can only be accessed within the smart contract.\n\n---\n\n```bash\n    Internal functions and variables are similar to private visibility can be accessed in:\n    1. Only within the smart contact that declares them.\n    2. They can also be accessed from deived contacts (e.g child contracts)\n```\n\n    ### For example  `string internal internalVar = \"I ",
+              "filename": "onsite-program/submissions/week-3/day-3/Sherif-Lawal/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# What I Learned in Solidity Yesterday: Data Types, Variables & Smart Contract Basics\n\nIn yesterday\u2019s class, we focused on the fundamentals of **Solidity**, the programming language used to develop smart contracts on the Ethereum blockchain. We studied **data types**, how **variables** work, and how **smart contracts** are structured\u2014all essential topics for building decentralized applications (dApps).\n\n## Solidity Basics\n\nSolidity is **statically typed**, meaning every variable must have its data type explicitly declared. This helps the compiler catch errors early and assign default values. For example:\n\n- A `bool` defaults to `false`\n- Numbers (`int` or `uint`) default to `0`\n\n---\n\n## Data Types in Solidity\n\nSolidity has two main categories of data types:\n\n### 1. Value Types\n\nThese hold their data directly and are copied when assigned or passed to functions. They include:\n\n- `bool`: `true` or `false`\n- `int` / `uint`: Signed and unsigned integers\n- `address`: 20-byte Ethereum wallet address\n- `enum`: Named constants like `Pending`, `Approved`, `Rejected`\n- `bytes`: Fixed-size raw data\n- `string`: Dynamic-length text (less gas-efficient than `bytes`)\n\n### 2. Reference Types\n\nThese store data by reference. If two variables point to the same data, changes to one affect the other. They include:\n\n- `arrays`: Fixed or dynamic-length lists\n- `strings`: Essentially arrays of characters\n- `structs`: Custom groupings (e.g., student info with `name`, `age`, `grade`)\n- `mappings`: Key-value store (e.g., tracking token balances by wallet address)\n\n---\n\n## Smart Contract Structure\n\nA Solidity contract is similar to a **class** in object-oriented programming. It\u2019s compiled into **bytecode** because the **Ethereum Virtual Machine (EVM)** can only understand bytecode\u2014not raw Solidity code.\n\n### Key Elements:\n\n- **SPDX License Identifier**: Declares licensing terms\n- **`pragma` Directive**: Specifies the Solidity compiler version\n- **`contract` Keyword**: Starts the contract declar",
+              "filename": "online-program/submissions/week-3/day-4/OlaiwonAbdullahi-Merkle-Tree/summary.md"
+            }
+          ],
+          "tool_call_id": "twnmn26hz",
+          "metadata": null,
+          "timestamp": "2025-10-21T11:01:15.210591+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "According to the information found, here are the topics and weeks covered in the Web3Bridge Cohort XIII program:\n\n- Day 1: \n- Day 2:\n  - Deploy and Verify storage.sol contract (get it from Remix IDE) using Hardhat to Lisk Sepolia, push your code to Web3Bridge organisation repo \n\n- Day 3:\n  - Solidity Visibility Specifiers \n\n- Day 4:\n  - Data Types, Variables & Smart Contract Basics\n\nNote that topics and the days they were covered are not comprehensive due to the search results provided.\n\n*Source:* [README.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/README.md) [onsite-program/submissions/week-3/day-3/README.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/onsite-program/submissions/week-3/day-3/README.md) [onsite-program/submissions/week-3/day-4/OlaiwonAbdullahi-Merkle-Tree/summary.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/onsite-program/submissions/week-3/day-4/OlaiwonAbdullahi-Merkle-Tree/summary.md)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4996,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 285,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-21T11:01:16+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-48146dd3-c18a-4122-986e-75a8d58e7169",
+      "finish_reason": "stop"
+    }
+  ],
+  "source": "user"
+}

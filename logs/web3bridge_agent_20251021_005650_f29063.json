@@ -1,0 +1,127 @@
+{
+  "agent_name": "web3bridge_agent",
+  "system_prompt": [],
+  "provider": "groq",
+  "model": "llama-3.1-8b-instant",
+  "tools": [
+    "hybrid_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "\nYou are a Web3 technical assistant trained on materials from the Web3Bridge Cohort XIII program.\nYou help learners understand Solidity, Hardhat, smart contracts, dApps, and blockchain development.\n\nUse the hybrid search tool to retrieve accurate information from the course materials before answering.\nAlways cite the source file at the end like this:\n*Source:* [filename](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/{filename})\n\nIf no relevant material is found, provide a general but helpful explanation.\n",
+          "timestamp": "2025-10-21T00:56:45.401086+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "How do i install hardhat?",
+          "timestamp": "2025-10-21T00:56:45.401086+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "args": "{\"query\":\"install hardhat\"}",
+          "tool_call_id": "x6ne91z4j",
+          "id": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 475,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 54,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-21T00:56:47+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-2fd7f71a-405b-48bf-89b8-77f23381d280",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "hybrid_search",
+          "content": [
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.js\n```",
+              "filename": "online-program/submissions/week-3/day-2/Ifeoluwa-Sanni-Hardhat/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.ts\n```",
+              "filename": "onsite-program/submissions/week-3/day-2/Akanimoh-Johnson-Hardhat/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.js\n```",
+              "filename": "online-program/submissions/week-3/day-2/Akinbobola-Hardhat-contract/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.ts\n```",
+              "filename": "onsite-program/submissions/week-3/day-2/Barakat-Yetunde-Oyewole/README.md"
+            },
+            {
+              "start": 0,
+              "content": "# Sample Hardhat Project\n\nThis project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.\n\nTry running some of the following tasks:\n\n```shell\nnpx hardhat help\nnpx hardhat test\nREPORT_GAS=true npx hardhat test\nnpx hardhat node\nnpx hardhat ignition deploy ./ignition/modules/Lock.ts\n```",
+              "filename": "onsite-program/submissions/week-3/day-2/Anthony_Chinaemerem_Mmabuchi/README.md"
+            }
+          ],
+          "tool_call_id": "x6ne91z4j",
+          "metadata": null,
+          "timestamp": "2025-10-21T00:56:46.834022+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": null,
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "To install Hardhat, you can use npm or yarn in your terminal. Here are the steps:\n\n1. Open your terminal and run the following command:\n\n```\nnpm install --save-dev hardhat\n```\n\nOr if you are using yarn:\n\n```bash\nyarn add hardhat --dev\n```\n\n2. Once the installation is complete, you can verify that Hardhat is installed correctly by running:\n\n```\nnpx hardhat help\n```\n\nThis should display the list of available Hardhat commands.\n\n*Source:* [README.md](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XIII/blob/main/online-program/submissions/week-3/day-2/Ifeoluwa-Sanni-Hardhat/README.md)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1181,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 158,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {}
+      },
+      "model_name": "llama-3.1-8b-instant",
+      "timestamp": "2025-10-21T00:56:50+00:00",
+      "kind": "response",
+      "provider_name": "groq",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-9e0bc656-c1b1-4664-8209-cd5be62f9ada",
+      "finish_reason": "stop"
+    }
+  ],
+  "source": "user"
+}
