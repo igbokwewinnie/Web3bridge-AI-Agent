@@ -1,62 +1,67 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import asyncio
+from dotenv import load_dotenv
 from app import ingest, search_agent, logs
 
+# --- Load environment variables ---
 load_dotenv()
-
 api_key = os.getenv("GROQ_API_KEY")
 
-
-# --- App setup ---
+# --- Streamlit setup ---
 st.set_page_config(page_title="Web3Bridge AI Assistant", page_icon="⚡", layout="centered")
 st.title("⚡ Web3Bridge Cohort XIII AI Assistant")
-st.caption("Ask me anything about the Web3Bridge Cohort XIII repository")
+st.caption("Ask me anything about the Web3Bridge Cohort XIII repository!")
 
 REPO_OWNER = "Bloceducare"
 REPO_NAME = "Web3bridge-Web3-Cohort-XIII"
 
 
-# --- Initialization (cached) ---
+# --- Initialize agent (cached) ---
 @st.cache_resource
 def init_agent():
-    """Initialize the agent and index (cached for performance)."""
+    """Initialize and cache the agent."""
     st.write("🔄 Building index and initializing agent...")
-    index = ingest.index_data(REPO_OWNER, REPO_NAME, chunk=True)
+    ingest.index_data(REPO_OWNER, REPO_NAME, chunk=True)
     agent = search_agent.init_agent(REPO_OWNER, REPO_NAME)
     return agent
 
+agent = init_agent()
 
-agent = init_agent()  # ✅ no args needed here anymore
 
-
-# --- Chat history setup ---
+# --- Manage chat history ---
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# --- Display chat history ---
+# Display chat messages
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
 
-# --- Streaming helper ---
+# --- Streaming function (Groq-safe, async-friendly) ---
 def stream_response(prompt: str):
-    """Stream model responses word by word using asyncio."""
+    """Safely stream responses, compatible with Streamlit Cloud."""
     async def agen():
         async with agent.run_stream(user_prompt=prompt) as result:
-            last_len = 0
-            full_text = ""
-            async for chunk in result.stream_output(debounce_by=0.01):
-                new_text = chunk[last_len:]
-                last_len = len(chunk)
-                full_text = chunk
-                if new_text:
-                    yield new_text
-            logs.log_interaction_to_file(agent, result.new_messages())
-            st.session_state._last_response = full_text
+            try:
+                # Try the newer streaming API
+                async for chunk in result.stream_output(debounce_by=0.01):
+                    yield chunk
+            except AttributeError:
+                try:
+                    # Fallback to older API (if available)
+                    async for chunk in result.stream_text():
+                        yield chunk
+                except AttributeError:
+                    # Final fallback: non-streamed
+                    text = await result.get_output_text()
+                    yield text
 
+            # Log the interaction after streaming
+            logs.log_interaction_to_file(agent, result.new_messages())
+
+    # Run async generator safely in Streamlit (non-blocking)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     agen_obj = agen()
@@ -66,20 +71,24 @@ def stream_response(prompt: str):
             piece = loop.run_until_complete(agen_obj.__anext__())
             yield piece
     except StopAsyncIteration:
-        return
+        pass
 
 
-# --- User Input Section ---
+# --- Chat input section ---
 if prompt := st.chat_input("Ask your Web3Bridge question..."):
-    # Show user question
+    # Display user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Stream assistant reply
+    # Stream assistant’s response
     with st.chat_message("assistant"):
-        response_text = st.write_stream(stream_response(prompt))
+        try:
+            response_text = st.write_stream(stream_response(prompt))
+        except Exception as e:
+            st.error(f"⚠️ Error: {e}")
+            st.stop()
 
-    # Save assistant's reply to session
+    # Save the assistant's response
     final_text = getattr(st.session_state, "_last_response", response_text)
     st.session_state.messages.append({"role": "assistant", "content": final_text})
